@@ -17,11 +17,11 @@ class Player(FirstPersonController):
         )
 
 class Warp(Entity):
-    def __init__(self):
+    def __init__(self,i,j):
         super().__init__(
             warp = Entity(
                 model = 'cube',
-                color = color.blue,
+                color = color.gray,
                 scale = (5,5,5),
                 position = (i*5,0,j*5),
                 collider = 'box'
@@ -93,7 +93,7 @@ MAP = [
 
 MAP1 = [
     [11,'p',11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11],
-    [11,__,__,__,__,11,__,11,11,11,__,11,11,11,__,11,11,11,__,11,11,11,__,11,11],
+    [11,__,'w',__,__,11,__,11,11,11,__,11,11,11,__,11,11,11,__,11,11,11,__,11,11],
     [11,11,11,11,__,11,__,11,11,11,__,11,11,11,__,__,__,__,__,__,__,__,__,11,11],
     [11,11,11,__,__,11,__,11,11,11,__,11,11,11,__,11,11,11,11,11,11,11,__,11,11],
     [11,11,__,__,11,11,__,11,11,11,__,11,11,11,__,11,11,__,__,__,11,11,__,11,11],
@@ -126,10 +126,13 @@ for i in range(len(MAP1)):
                 exitdoor = Exit(i,j)
                 continue
             
-            
+            if MAP1[i][j] == 'w':
+                warp = Warp(i,j)
+                continue
+
             wall = Entity(
                 model = 'cube',
-                color = color.blue,
+                color = color.gray,
                 scale = (5,5,5),
                 position = (i*5,0,j*5),
                 collider = 'box',
