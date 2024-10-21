@@ -54,10 +54,10 @@ player = Player()
 
 axe = Entity(
                 model = 'axe.fbx',
-                #color = color.blue,
+                color = color.blue,
                 position = (5,0,5),
                 scale = 0.1,
-                texture = r'textures\axe.jpg'
+                #texture = r'textures\axe.jpg'
               ) 
         
 
@@ -117,11 +117,11 @@ for i in range(len(MAP1)):
             
             wall = Entity(
                 model = 'cube',
-                #color = color.blue,
+                color = color.blue,
                 scale = (5,5,5),
                 position = (i*5,0,j*5),
                 collider = 'box',
-                texture = r'medieval_red_brick_4k.blend\textures\medieval_red_brick_diff_4k.jpg'
+                #texture = r'medieval_red_brick_4k.blend\textures\medieval_red_brick_diff_4k.jpg'
               ) 
             
            
@@ -130,11 +130,11 @@ for i in range(len(MAP1)):
 
 ground = Entity(
     model = 'plane',
-    #color = color.red,
+    color = color.yellow,
     position = (0,-1,0),
     scale = (2000,1,2000),
     collider = 'mesh',
-    texture = r'raw_plank_wall_4k.blend\textures\raw_plank_wall_diff_4k.jpg'
+    #texture = r'raw_plank_wall_4k.blend\textures\raw_plank_wall_diff_4k.jpg'
 
 )
 
