@@ -13,7 +13,19 @@ class Player(FirstPersonController):
             model = 'axe.fbx',
             collider = 'mash',
             scale = 0.1,
-            texture = r'textures\axe.jpg'
+            #texture = r'textures\axe.jpg'
+        )
+
+class Warp(Entity):
+    def __init__(self):
+        super().__init__(
+            warp = Entity(
+                model = 'cube',
+                color = color.blue,
+                scale = (5,5,5),
+                position = (i*5,0,j*5),
+                collider = 'box'
+            )
         )
 
 class Exit(Entity):
