@@ -27,6 +27,14 @@ class Warp(Entity):
                 collider = 'box'
             )
         )
+        self.a = player
+        
+    def update(self):
+        self.abcd()
+
+    def abcd(self):
+        if self.warp.intersects(self.a):
+            self.a.position = (0,10,0)
 
 class Exit(Entity):
     def __init__(self,i,j):
@@ -60,7 +68,7 @@ def input(key):
         app.quit()
 
 
-EditorCamera()
+#EditorCamera()
 player = Player()
 
 
