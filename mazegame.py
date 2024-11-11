@@ -1,8 +1,9 @@
 from ursina import * 
 from ursina.prefabs.first_person_controller import FirstPersonController
 
-
 __ = False
+
+a=111
 
 app = Ursina()
 
@@ -13,28 +14,8 @@ class Player(FirstPersonController):
             model = 'axe.fbx',
             collider = 'mash',
             scale = 0.1,
-            #texture = r'textures\axe.jpg'
+            texture = r'textures\axe.jpg'
         )
-
-class Warp(Entity):
-    def __init__(self,i,j):
-        super().__init__(
-            warp = Entity(
-                model = 'cube',
-                color = color.gray,
-                scale = (5,5,5),
-                position = (i*5,0,j*5),
-                collider = 'box'
-            )
-        )
-        self.a = player
-        
-    def update(self):
-        self.abcd()
-
-    def abcd(self):
-        if self.warp.intersects(self.a):
-            self.a.position = (0,10,0)
 
 class Exit(Entity):
     def __init__(self,i,j):
@@ -68,7 +49,7 @@ def input(key):
         app.quit()
 
 
-#EditorCamera()
+EditorCamera()
 player = Player()
 
 
@@ -101,7 +82,7 @@ MAP = [
 
 MAP1 = [
     [11,'p',11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11],
-    [11,__,'w',__,__,11,__,11,11,11,__,11,11,11,__,11,11,11,__,11,11,11,__,11,11],
+    [11,__,__,__,__,11,__,11,11,11,__,11,11,11,__,11,11,11,__,11,11,11,__,11,11],
     [11,11,11,11,__,11,__,11,11,11,__,11,11,11,__,__,__,__,__,__,__,__,__,11,11],
     [11,11,11,__,__,11,__,11,11,11,__,11,11,11,__,11,11,11,11,11,11,11,__,11,11],
     [11,11,__,__,11,11,__,11,11,11,__,11,11,11,__,11,11,__,__,__,11,11,__,11,11],
@@ -134,13 +115,10 @@ for i in range(len(MAP1)):
                 exitdoor = Exit(i,j)
                 continue
             
-            if MAP1[i][j] == 'w':
-                warp = Warp(i,j)
-                continue
-
+            
             wall = Entity(
                 model = 'cube',
-                color = color.gray,
+                color = color.blue,
                 scale = (5,5,5),
                 position = (i*5,0,j*5),
                 collider = 'box',
